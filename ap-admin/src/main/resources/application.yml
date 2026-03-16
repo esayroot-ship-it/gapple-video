@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: apvideos
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/video_platform?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+  rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 1000MB
+
+  threads:
+    virtual:
+      enabled: true
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+mybatis-plus:
+  # 1️⃣ Mapper XML 扫描路径（dao 模块里的 XML）
+  mapper-locations: classpath*:mapper/**/*.xml
+
+  # 2️⃣ 实体类包路径（common 模块）
+  type-aliases-package: com.ap.common.entity
+
+  global-config:
+    db-config:
+      id-type: auto
+
+file-storage:
+  video-path: D:/备份/apvideos/video/
+  series-path: D:/备份/apvideos/simg/
+  user-path: D:/备份/apvideos/uimg/
+
+meilisearch:
+  host: http://localhost:7700
+  api-key: masterKey
+
